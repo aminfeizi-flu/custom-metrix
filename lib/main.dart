@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
       })
     });
 
-    Metrix.getUserId().then((value) => {
+    Metrix.getUserId().listen((value) => {
       this.setState(() {
         userId = value;
       })
