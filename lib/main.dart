@@ -12,18 +12,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String sessionNumber = "";
+  String sessionNum = "";
   String sessionId = "";
   String userId = "";
   String deeplink = "";
-  MetrixAttribution attribution;
+  MetrixAttribution? attribution;
 
   @override
   void initState() {
     super.initState();
 
     setState(() {
-      sessionNumber = "";
+      sessionNum = "";
       sessionId = "";
       userId = "";
       deeplink = "";
@@ -55,15 +55,15 @@ class _MyAppState extends State<MyApp> {
       })
     });
 
-    Metrix.getSessionNumber().then((sessionNum) => {
+    Metrix.getSessionId().listen((id) => {
       this.setState(() {
-        sessionNumber = sessionNum.toString();
+        sessionId = id;
       })
     });
 
-    Metrix.getSessionId().then((id) => {
+    Metrix.getSessionNumber().listen((sessionNumber) => {
       this.setState(() {
-        sessionId = id;
+        sessionNum = sessionNumber.toString();
       })
     });
   }
@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
           body: Center(child: Column(children: <Widget>[
             Container(
                 margin: EdgeInsets.all(20),
-                child: Text('Session number is: $sessionNumber')
+                child: Text('Session number is: $sessionNum')
             ),
             Container(
                 margin: EdgeInsets.all(20),
@@ -91,9 +91,10 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.blueAccent,
                 textColor: Colors.white,
                 onPressed: () {
-                  Metrix.newEvent('perzu', {
+                  Metrix.newEvent('lbuoa', {
                     "name": "hisName"
                   });
+                  Metrix.newEvent('lbuoa');
                 },
               ),
             ),
@@ -104,7 +105,10 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.blueAccent,
                 textColor: Colors.white,
                 onPressed: () {
-                  Metrix.newRevenue('perzu', 2500.5, 0, null);
+                  Metrix.newRevenue('ykwyp', 2500.5);
+                  Metrix.newRevenue('ykwyp', 2500.5, currency: 0);
+                  Metrix.newRevenue('ykwyp', 2500.5, currency: 0, orderId: "someId");
+                  Metrix.newRevenue('ykwyp', 2500.5, orderId: "someId");
                 },
               ),
             ),
@@ -118,7 +122,7 @@ class _MyAppState extends State<MyApp> {
             ),
             Container(
                 margin: EdgeInsets.all(20),
-                child: Text('User attribution status: ${attribution != null ? attribution.attributionStatus : ""}')
+                child: Text('User attribution status: ${attribution?.attributionStatus ?? ""}')
             ),
           ]))
       ),
