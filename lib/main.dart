@@ -30,22 +30,16 @@ class _MyAppState extends State<MyApp> {
       attribution = null;
     });
 
-    Metrix.setPushToken('pushToken');
+    // iOS only
+    Metrix.initialize("lcqmfsnvhzznvhe");
 
     Metrix.addUserAttributes({
       "name": "hisName"
     });
 
-    Metrix.getAttributionData().then((value) => {
+    Metrix.getAttributionData().listen((value) => {
       this.setState(() {
         attribution = value;
-      })
-    });
-
-    Metrix.shouldLaunchDeeplink = true;
-    Metrix.getDeeplinkResponse().then((value) => {
-      this.setState(() {
-        deeplink = value;
       })
     });
 
@@ -115,10 +109,6 @@ class _MyAppState extends State<MyApp> {
             Container(
                 margin: EdgeInsets.all(20),
                 child: Text('UserId is: $userId')
-            ),
-            Container(
-                margin: EdgeInsets.all(20),
-                child: Text('Deeplink is: $deeplink')
             ),
             Container(
                 margin: EdgeInsets.all(20),
