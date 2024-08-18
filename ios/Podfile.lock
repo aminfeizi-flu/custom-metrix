@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - Metrix/flutter (2.1.0)
+  - metrix_plugin (1.4.0):
+    - Flutter
+    - Metrix/flutter (= 2.1.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - metrix_plugin (from `.symlinks/plugins/metrix_plugin/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Metrix
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  metrix_plugin:
+    :path: ".symlinks/plugins/metrix_plugin/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Metrix: e9065ce7c97691c87ffe929e32b34677822e8cfc
+  metrix_plugin: 1b4e6eafe08cec7ac576b25a65163d701b342018
+
+PODFILE CHECKSUM: e840dd57ba2b03bcb6fdba293a27c5f82151a80a
+
+COCOAPODS: 1.14.3
